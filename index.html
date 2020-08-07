@@ -8,6 +8,8 @@
     <script src="JS/aframe.js"></script>
     <!-- <script src="JS/aframe-ar.js"></script> -->
     <script src="JS/aframe-ar-nft.js"></script>
+    <script src="JS/gesture-detector.js"></script>
+    <Script src="JS/gesture-handler.js"></Script>
 
     <!-- style for the loader -->
     <style>
@@ -43,7 +45,9 @@
       vr-mode-ui="enabled: false;"
       renderer="logarithmicDepthBuffer: true;"
       embedded
-      arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
+      arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+      gesture-detector
+      id="scene">
       <!-- a-nft is the anchor that defines an Image Tracking entity -->
       <!-- on 'url' use the path to the Image Descriptors created before. -->
       <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
@@ -53,12 +57,17 @@
         smooth="true"
         smoothCount="10"
         smoothTolerance=".01"
-        smoothThreshold="5">
+        smoothThreshold="5"
+        raycaster="objects: .clickable"
+        emitevents="true"
+        cursor="fuse: false; rayOrigin: mouse;">
           <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
           <a-entity
           gltf-model="/model/scene.gltf"
               scale="2 2 2"
               position="0 0 -20"
+              class="clickable"
+              gesture-handler
           >
           </a-entity>
           <!-- <a-entity geometry="primitive: sphere; radius: 30"
