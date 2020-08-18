@@ -81,6 +81,15 @@
       </a-nft>
       <!-- static camera that moves according to the device movemenents -->
       <a-entity camera></a-entity>
+      <a-entity
+          gltf-model="/model/junkrat/scene.gltf"
+              scale="1 1 1"
+              position="0 0 -10"
+              class="clickable"
+              gesture-handler
+              sound="src: url(/sound/Victory.mp3); autoplay: true; volume:50"
+          >
+          </a-entity>
       <!-- <a-entity camera look-controls position="0 1.6 0"></a-entity> -->
     </a-scene>
   </body>
