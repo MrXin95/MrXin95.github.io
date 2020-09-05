@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>location based AR</title>
+    <script src="../static/JS/a-frame/aframe.js"></script>
+    <script src="../static/JS/a-frame/aframe-ar.js"></script>
+    <script src="../static/JS/a-frame/aframe-ar-nft.js"></script>
+    <script src="../static/JS/a-frame/aframe-extras.loaders.js"></script>
+    <script src="../static/JS/a-frame/aframe-look-at-component.js"></script>
+    <script src="../static/JS/a-frame/gesture-detector.js"></script>
+    <script src="../static/JS/a-frame/gesture-handler.js"></script>
+
+    <script src="../static/jquery/jquery-3.2.0.min.js"></script>
+    <script src="../static/bootstrap/js/bootstrap.js"></script>
+    <link href="../static/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+
+    <style>
+        #audio_btn {
+            top: 35px;
+            right: 35px;
+            width: 100px;
+            height: 100px;
+            background-image: url("../static/images/bgm-c.svg");
+            background-size: contain;
+            z-index: 9999;
+            position: absolute;
+        }
+
+        .rotate {
+            -webkit-animation: rotating 4s linear infinite;
+            -moz-animation: rotating 4s linear infinite;
+            -o-animation: rotating 4s linear infinite;
+            animation: rotating 4s linear infinite
+        }
+
+        @-webkit-keyframes rotating {
+            from {
+                -webkit-transform: rotate(0)
+            }
+            to {
+                -webkit-transform: rotate(360deg)
+            }
+        }
+
+        @keyframes rotating {
+            from {
+                transform: rotate(0)
+            }
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        @-moz-keyframes rotating {
+            from {
+                -moz-transform: rotate(0)
+            }
+            to {
+                -moz-transform: rotate(360deg)
+            }
+        }
+
+        .demo-introducation {
+            position: absolute;
+            top: 86px;
+            left: 20px;
+            z-index: 9999;
+            display: flex;
+            font-size: 20px;
+        }
+
+        .demo-introducation-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+            display: flex;
+            font-size: 20px;
+        }
+
+        .int-hide {
+            display: none;
+        }
+
+
+        .intro_btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: rgba(1, 124, 227, 1);
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+
+        .intro_btn:hover {
+            background-color: #269CE9;
+        }
+
+        .intro_btn:active {
+            background-color: #269CE9;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+    </style>
+
+</head>
+<body style="margin: 0; overflow: hidden;">
+
+
+<div class="intro_btn demo-introducation-btn" id="intro_btn">
+    demo信息
+</div>
+
+<div class="demo-introducation int-hide" id="intro-text">
+    <p>
+        名称
+        <br>
+        作者
+        <br>
+        简介
+        <br>
+    </p>
+</div>
+
+<div id="audio_btn" class="rotate">
+    <audio src="../static/media/bgm.mp3" id="media" autoplay="autoplay" preload="auto" loop></audio>
+</div>
+
+<a-scene
+        renderer="logarithmicDepthBuffer: true;"
+        embedded
+        loading-screen="enabled: false;"
+        arjs="sourceType: webcam; debugUIEnabled: false;"
+        class="col-md-3"
+>
+    <a-assets>
+        <a-asset-item
+                id="animated-asset"
+                src="../static/model/human.glb"
+        ></a-asset-item>
+    </a-assets>
+
+    <a-entity
+            look-at="[gps-camera]"
+            animation-mixer="loop: repeat"
+            gltf-model="#animated-asset"
+            scale="0.7737883550535797 0.7737883550535797 0.7737883550535797"
+            gps-entity-place="latitude: 21.290458566151408; longitude: 120.11694444444444;"
+    ></a-entity>
+
+    <a-camera gps-camera rotation-reader></a-camera>
+</a-scene>
+
+
+<script>
+
+    var x = document.getElementById("media");
+    $(function () {
+        $("#audio_btn").click(function () {
+            $(this).toggleClass("rotate"); //控制音乐图标 自转或暂停
+
+            //控制背景音乐 播放或暂停
+            if ($(this).hasClass("rotate")) {
+                x.play();
+            } else {
+                x.pause();
+            }
+        })
+
+        $("#intro_btn").click(function () {
+            $("#intro-text").toggleClass("int-hide");
+
+        })
+    });
+</script>
+</body>
+</html>
