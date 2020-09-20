@@ -150,22 +150,14 @@
         <audio src="../static/media/dhf.mp3" id="media" autoplay="autoplay" preload="auto" loop></audio>
     </div>
 
-    <!-- <a-scene renderer="logarithmicDepthBuffer: true;" embedded loading-screen="enabled: false;" arjs="sourceType: webcam; 
-    sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;" class="col-md-3"> -->
-
     <a-scene vr-mode-ui="enabled: false;" renderer="logarithmicDepthBuffer: true;" embedded arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;" gesture-detector
-        id="scene" class="col-md-3">
-        <!-- <a-assets>
-            <a-asset-item id="animated-asset" src="../static/model/human.glb"></a-asset-item>
-        </a-assets>
-
-        <a-entity look-at="[gps-camera]" animation-mixer="loop: repeat" gltf-model="#animated-asset" scale="0.7737883550535797 0.7737883550535797 0.7737883550535797" gps-entity-place="latitude: 21.290458566151408; longitude: 120.11694444444444;"></a-entity>
-
-        <a-camera gps-camera rotation-reader></a-camera> -->
-
+        id="scene">
+        <!-- a-nft is the anchor that defines an Image Tracking entity -->
+        <!-- on 'url' use the path to the Image Descriptors created before. -->
+        <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
         <a-nft type="nft" url="/NFT/mao/mao" smooth="true" smoothCount="10" smoothTolerance=".01" smoothThreshold="5" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
             <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
-            <a-entity gltf-model="/model/monobike/scene.gltf" scale="1 1 1" position="0 0 0" class="clickable" gesture-handler>
+            <a-entity gltf-model="/model/monobike/scene.gltf" scale="1 1 1" position="0 0 -10" class="clickable" gesture-handler>
             </a-entity>
             <!-- <a-entity geometry="primitive: sphere; radius: 30"
           light="type: point; color: white; intensity: 10"
@@ -175,6 +167,8 @@
 
 
         </a-nft>
+        <!-- static camera that moves according to the device movemenents -->
+        <a-entity camera></a-entity>
     </a-scene>
 
 
