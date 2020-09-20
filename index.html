@@ -25,7 +25,7 @@
             justify-content: center;
             align-items: center;
         }
-
+        
         .arjs-loader div {
             text-align: center;
             font-size: 1.25em;
@@ -37,61 +37,33 @@
 <body style="margin : 0px; overflow: hidden;">
     <!-- minimal loader shown until image descriptors are loaded. Loading may take a while according to the device computational power -->
     <div class="arjs-loader">
-      <div>正在加载请稍等。。。</div>
+        <div>正在加载请稍等。。。</div>
     </div>
 
     <!-- a-frame scene -->
-    <a-scene
-      vr-mode-ui="enabled: false;"
-      renderer="logarithmicDepthBuffer: true;"
-      embedded
-      arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;"
-      gesture-detector
-      id="scene">
-      <!-- a-nft is the anchor that defines an Image Tracking entity -->
-      <!-- on 'url' use the path to the Image Descriptors created before. -->
-      <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
-      <a-nft
-        type="nft"
-        url="/NFT/junkrat/junkrat"
-        smooth="true"
-        smoothCount="10"
-        smoothTolerance=".01"
-        smoothThreshold="5"
-        raycaster="objects: .clickable"
-        emitevents="true"
-        cursor="fuse: false; rayOrigin: mouse;">
-          <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
-          <a-entity
-          gltf-model="/model/junkrat/scene.gltf"
-              scale="1 1 1"
-              position="0 0 -10"
-              class="clickable"
-              gesture-handler
-              sound="src: url(/sound/Victory.mp3); autoplay: true; volume:50"
-          >
-          </a-entity>
-          <!-- <a-entity geometry="primitive: sphere; radius: 30"
+    <a-scene vr-mode-ui="enabled: false;" renderer="logarithmicDepthBuffer: true;" embedded arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960;" gesture-detector
+        id="scene">
+        <!-- a-nft is the anchor that defines an Image Tracking entity -->
+        <!-- on 'url' use the path to the Image Descriptors created before. -->
+        <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
+        <a-nft type="nft" url="/NFT/junkrat/junkrat" smooth="true" smoothCount="10" smoothTolerance=".01" smoothThreshold="5" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;">
+            <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
+            <a-entity gltf-model="/model/junkrat/scene.gltf" scale="1 1 1" position="0 0 -10" class="clickable" gesture-handler sound="src: url(/sound/Victory.mp3); autoplay: true; volume:50">
+            </a-entity>
+            <!-- <a-entity geometry="primitive: sphere; radius: 30"
           light="type: point; color: white; intensity: 10"
           material="color: white; shader: flat; src: /img/LOL.jpg"
           position="0 0 -5"
           sound="src: url(/sound/xajh.mp3); autoplay: true; volume:50"></a-entity> -->
-          
-          
-      </a-nft>
-      <!-- static camera that moves according to the device movemenents -->
-      <a-entity camera></a-entity>
-      <a-entity
-          gltf-model="/model/junkrat/scene.gltf"
-              scale="1 1 1"
-              position="0 0 -10"
-              class="clickable"
-              gesture-handler
-              sound="src: url(/sound/Victory.mp3); autoplay: true; volume:50"
-          >
-          </a-entity>
-      <!-- <a-entity camera look-controls position="0 1.6 0"></a-entity> -->
+
+
+        </a-nft>
+        <!-- static camera that moves according to the device movemenents -->
+        <a-entity camera></a-entity>
+        <a-entity gltf-model="/model/mao/毛泽东.gltf" scale="1 1 1" position="0 0 -10" class="clickable" gesture-handler sound="src: url(/sound/Victory.mp3); autoplay: true; volume:50">
+        </a-entity>
+        <!-- <a-entity camera look-controls position="0 1.6 0"></a-entity> -->
     </a-scene>
-  </body>
+</body>
 
 </html>
