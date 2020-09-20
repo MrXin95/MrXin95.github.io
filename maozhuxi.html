@@ -134,7 +134,8 @@
         <audio src="../static/media/bgm.mp3" id="media" autoplay="autoplay" preload="auto" loop></audio>
     </div>
 
-    <a-scene renderer="logarithmicDepthBuffer: true;" embedded loading-screen="enabled: false;" arjs="sourceType: webcam; debugUIEnabled: false;" class="col-md-3">
+    <a-scene renderer="logarithmicDepthBuffer: true;" embedded loading-screen="enabled: false;" arjs="sourceType: webcam; 
+    sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;" class="col-md-3">
         <a-assets>
             <a-asset-item id="animated-asset" src="../static/model/human.glb"></a-asset-item>
         </a-assets>
